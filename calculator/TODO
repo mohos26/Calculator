@@ -1,0 +1,3 @@
++ any number > 1_000_000_000_000 return +∞
++ any number < -1_000_000_000_000 return -∞
++ division by zero
