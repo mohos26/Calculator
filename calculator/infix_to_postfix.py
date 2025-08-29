@@ -14,7 +14,38 @@ def is_operator(s):
 	return s in ("/", "*", "-", "+", "**", "(", ")")
 
 
+def ft_aid(expr: list) -> list:
+	res = []
+	sing = 1
+	for i, arg in enumerate(expr):
+		if arg == '-':
+			if not i:
+				res.append("-1")
+				res.append("*")
+			elif expr[i - 1] in ("*", "(", "-", "+"):
+				res.append("-1")
+				res.append("*")
+			elif expr[i - 1] in ("/", "**"):
+				sing *= -1
+			else:
+				res.append(arg)
+		elif arg == '+':
+			if not i:
+				continue
+			elif expr[i - 1] in ("/", "*", "-", "+", "**", "("):
+				continue
+			else:
+				res.append(arg)
+		elif not is_operator(arg):
+			res.append(str(int(arg) * sing))
+			sing = 1
+		else:
+			res.append(arg)
+	return res
+
+
 def infix_to_postfix(expr: list) -> list:
+	expr = ft_aid(expr)
 	stack, postfix = [], []
 	while expr:
 		arg = expr[0]

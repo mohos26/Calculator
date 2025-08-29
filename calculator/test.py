@@ -6,8 +6,8 @@ file = open("test.txt")
 
 for i, expr in enumerate(file.read().split('\n')):
     i += 1
-    answer = round(eval(expr), 6)
     postfix_var = infix_to_postfix(expr.split())
+    answer = round(eval(expr), 6)
     result = round(postfix(postfix_var), 6)
     if result != answer:
         print(f"Test {i} !!! Fail !!!")
