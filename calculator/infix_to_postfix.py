@@ -1,6 +1,14 @@
-# 26.08.2025
+# ===============================
+# infix_to_postfix.py
+# Date: 26.08.2025
+# Source: https://edabit.com/challenge/NZtL4MGkpCfiwShhp
+# Purpose: Convert an infix expression into postfix (Reverse Polish Notation).
+# Supports operators: +, -, *, /, **
+# Handles precedence, associativity, and unary signs.
+# ===============================
 
 
+# Operator precedence dictionary
 d = {
 	"/":  2,
 	"*":  2,
@@ -10,11 +18,13 @@ d = {
 }
 
 
+# Check if a token is an operator or parenthesis.
 def is_operator(s):
 	return s in ("/", "*", "-", "+", "**", "(", ")")
 
 
-def ft_aid(expr: list) -> list:
+# Pre-process the infix expression handel : Unary minus, Unary minus and Sign propagation
+def preprocess(expr: list) -> list:
 	res = []
 	sing = 1
 	for i, arg in enumerate(expr):
@@ -44,8 +54,9 @@ def ft_aid(expr: list) -> list:
 	return res
 
 
+# Convert infix expression to postfix using the Shunting Yard algorithm.
 def infix_to_postfix(expr: list) -> list:
-	expr = ft_aid(expr)
+	expr = preprocess(expr)
 	stack, postfix = [], []
 	while expr:
 		arg = expr[0]
