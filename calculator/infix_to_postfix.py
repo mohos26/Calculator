@@ -55,7 +55,8 @@ def infix_to_postfix(expr: list) -> list:
 					postfix.append(stack.pop())
 				expr = expr[1:]
 				stack.pop()
-			elif not stack or '(' in (arg, stack[-1]) or d[stack[-1]] < d[arg]:
+			elif not stack or '(' in (arg, stack[-1]) or d[stack[-1]] < d[arg] or \
+				(d[stack[-1]] == d[arg] and d[arg] == 3):  # this for right operators
 				stack.append(arg)
 				expr = expr[1:]
 			else:
