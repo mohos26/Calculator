@@ -24,7 +24,7 @@ def is_operator(s):
 	return s in ("/", "*", "-", "+", "**", "(", "cos(", "sin(", "tan(", "abs(", "!", ")")
 
 
-def is_operator2(s):
+def is_single_operator(s):
 	return s in ("(", "cos(", "sin(", "tan(", "abs(")
 
 
@@ -67,13 +67,13 @@ def infix_to_postfix(expr: list) -> list:
 		arg = expr[0]
 		if is_operator(arg):
 			if arg == ')':
-				while not is_operator2(stack[-1]):
+				while not is_single_operator(stack[-1]):
 					postfix.append(stack.pop())
 				expr = expr[1:]
 				if stack[-1] != '(':
 					postfix.append(stack[-1])
 				stack.pop()
-			elif not stack or is_operator2(arg) or is_operator2(stack[-1]) or d[stack[-1]] < d[arg] or \
+			elif not stack or is_single_operator(arg) or is_single_operator(stack[-1]) or d[stack[-1]] < d[arg] or \
 				(d[stack[-1]] == d[arg] and d[arg] == 3):  # this for right operators
 				stack.append(arg)
 				expr = expr[1:]
