@@ -10,17 +10,22 @@
 
 # Operator precedence dictionary
 d = {
-	"/":  2,
-	"*":  2,
 	"-":  1,
 	"+":  1,
+	"/":  2,
+	"*":  2,
 	"**": 3,
+	"!":  4,
 }
 
 
 # Check if a token is an operator or parenthesis.
 def is_operator(s):
-	return s in ("/", "*", "-", "+", "**", "(", ")")
+	return s in ("/", "*", "-", "+", "**", "(", "cos(", "sin(", "tan(", "abs(", "!", ")")
+
+
+def is_operator2(s):
+	return s in ("(", "cos(", "sin(", "tan(", "abs(")
 
 
 # Pre-process the infix expression handel : Unary minus, Unary minus and Sign propagation
@@ -32,7 +37,7 @@ def preprocess(expr: list) -> list:
 			if not i:
 				res.append("-1")
 				res.append("*")
-			elif expr[i - 1] in ("*", "(", "-", "+"):
+			elif expr[i - 1] in ("*", "(", "cos(", "sin(", "tan(", "abs(", "-", "+"):
 				res.append("-1")
 				res.append("*")
 			elif expr[i - 1] in ("/", "**"):
@@ -42,7 +47,7 @@ def preprocess(expr: list) -> list:
 		elif arg == '+':
 			if not i:
 				continue
-			elif expr[i - 1] in ("/", "*", "-", "+", "**", "("):
+			elif expr[i - 1] in ("/", "*", "-", "+", "**", "(", "cos(", "sin(", "tan(", "abs("):
 				continue
 			else:
 				res.append(arg)
@@ -62,11 +67,13 @@ def infix_to_postfix(expr: list) -> list:
 		arg = expr[0]
 		if is_operator(arg):
 			if arg == ')':
-				while stack[-1] != '(':
+				while not is_operator2(stack[-1]):
 					postfix.append(stack.pop())
 				expr = expr[1:]
+				if stack[-1] != '(':
+					postfix.append(stack[-1])
 				stack.pop()
-			elif not stack or '(' in (arg, stack[-1]) or d[stack[-1]] < d[arg] or \
+			elif not stack or is_operator2(arg) or is_operator2(stack[-1]) or d[stack[-1]] < d[arg] or \
 				(d[stack[-1]] == d[arg] and d[arg] == 3):  # this for right operators
 				stack.append(arg)
 				expr = expr[1:]
