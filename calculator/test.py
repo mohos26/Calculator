@@ -15,9 +15,9 @@ for i, expr in enumerate(file.read().split('\n')):
         postfix_var = infix_to_postfix(expr.split())
         answer = round(eval(expr), 6)
     result = round(evaluate_postfix(postfix_var), 6)
-    #try:
+    # try:
     #    result = round(evaluate_postfix(postfix_var), 6)
-    #except:
+    # except:
     #    print("Error compilation")
     #    result = float("inf")
     if result != answer:
