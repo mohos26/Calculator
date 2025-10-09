@@ -59,4 +59,7 @@ def evaluate_postfix(expression: list) -> float:
 			stack.append(apply_single_operator(a, arg))
 		else:
 			stack.append(float(arg))
-	return stack.pop()
+	res = stack.pop()
+	if stack:
+		raise IndexError
+	return res

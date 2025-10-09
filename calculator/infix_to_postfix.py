@@ -52,7 +52,7 @@ def preprocess(expr: list) -> list:
 			else:
 				res.append(arg)
 		elif not is_operator(arg):
-			res.append(str(int(arg) * sing))
+			res.append(str(float(arg) * sing))
 			sing = 1
 		else:
 			res.append(arg)
