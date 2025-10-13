@@ -2,3 +2,4 @@
 + any number < -1_000_000_000_000 return -∞
 + division by zero
 + left-associative and right-associative, we have to ways
++ add press enter like '='

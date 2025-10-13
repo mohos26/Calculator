@@ -3,7 +3,7 @@
 # Date: 26.08.2025
 # Source: https://edabit.com/challenge/NZtL4MGkpCfiwShhp
 # Purpose: Convert an infix expression into postfix (Reverse Polish Notation).
-# Supports operators: +, -, *, /, **
+# Supports operators: +, -, *, /, ^
 # Handles precedence, associativity, and unary signs.
 # ===============================
 
@@ -14,14 +14,14 @@ d = {
 	"+":  1,
 	"/":  2,
 	"*":  2,
-	"**": 3,
+	"^": 3,
 	"!":  4,
 }
 
 
 # Check if a token is an operator or parenthesis.
 def is_operator(s):
-	return s in ("/", "*", "-", "+", "**", "(", "cos(", "sin(", "tan(", "abs(", "!", ")")
+	return s in ("/", "*", "-", "+", "^", "(", "cos(", "sin(", "tan(", "abs(", "!", ")")
 
 
 def is_single_operator(s):
@@ -40,14 +40,14 @@ def preprocess(expr: list) -> list:
 			elif expr[i - 1] in ("*", "(", "cos(", "sin(", "tan(", "abs(", "-", "+"):
 				res.append("-1")
 				res.append("*")
-			elif expr[i - 1] in ("/", "**"):
+			elif expr[i - 1] in ("/", "^"):
 				sing *= -1
 			else:
 				res.append(arg)
 		elif arg == '+':
 			if not i:
 				continue
-			elif expr[i - 1] in ("/", "*", "-", "+", "**", "(", "cos(", "sin(", "tan(", "abs("):
+			elif expr[i - 1] in ("/", "*", "-", "+", "^", "(", "cos(", "sin(", "tan(", "abs("):
 				continue
 			else:
 				res.append(arg)

@@ -7,8 +7,8 @@ def replace(lst):
 	for i, arg in enumerate(lst):
 		if arg == "√(":
 			lst[i] = "sqrt("
-		elif arg == "^":
-			lst[i] = "**"
+		# elif arg == "^":
+		# 	lst[i] = "**"
 	return lst
 
 

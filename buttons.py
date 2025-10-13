@@ -122,7 +122,7 @@ def sqrt(entry):
 
 
 def abs(entry):
-	insert_text(entry, "√(")
+	insert_text(entry, "abs(")
 
 
 def pi(entry):

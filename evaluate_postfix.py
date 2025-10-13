@@ -3,7 +3,7 @@
 # Date: 22.08.2025
 # Source: https://edabit.com/challenge/xWW8PMuLN8hmAgLMJ
 # Purpose: Evaluate a postfix (Reverse Polish Notation) expression.
-# Supports operators: +, -, *, /, **
+# Supports operators: +, -, *, /, ^
 # ===============================
 
 from math import *
@@ -11,7 +11,7 @@ from math import *
 
 # Check if a token is a valid operator.
 def is_operator(s: str) -> bool:
-	return s in ("/", "*", "-", "+", "**")
+	return s in ("/", "*", "-", "+", "^")
 
 
 def is_single_operator(s):
@@ -28,7 +28,7 @@ def apply_operator(a: float, operator: str, b: float) -> float:
 		return a / b
 	elif operator == '*':
 		return a * b
-	elif operator == '**':
+	elif operator == '^':
 		return a ** b
 	raise ArithmeticError(f"Invalid Operator: {operator}")
 
