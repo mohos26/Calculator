@@ -15,17 +15,16 @@ d = {
 	"/":  2,
 	"*":  2,
 	"^": 3,
-	"!":  4,
 }
+
+
+def is_single_operator(s):
+	return s in ("(", "sin(", "cos(", "tan(", "ln(", "log2(", "log10(", "sqrt(", "abs(", "fac(")
 
 
 # Check if a token is an operator or parenthesis.
 def is_operator(s):
-	return s in ("/", "*", "-", "+", "^", "(", "cos(", "sin(", "tan(", "abs(", "!", ")")
-
-
-def is_single_operator(s):
-	return s in ("(", "cos(", "sin(", "tan(", "abs(")
+	return s in d or is_single_operator(s) or s == ')'
 
 
 # Pre-process the infix expression handel : Unary minus, Unary minus and Sign propagation
@@ -37,7 +36,7 @@ def preprocess(expr: list) -> list:
 			if not i:
 				res.append("-1")
 				res.append("*")
-			elif expr[i - 1] in ("*", "(", "cos(", "sin(", "tan(", "abs(", "-", "+"):
+			elif expr[i - 1] in ("*", "-", "+") or is_single_operator(expr[i - 1]):
 				res.append("-1")
 				res.append("*")
 			elif expr[i - 1] in ("/", "^"):
@@ -47,7 +46,7 @@ def preprocess(expr: list) -> list:
 		elif arg == '+':
 			if not i:
 				continue
-			elif expr[i - 1] in ("/", "*", "-", "+", "^", "(", "cos(", "sin(", "tan(", "abs("):
+			elif is_operator(expr[i - 1]) and expr[i - 1] != ')':
 				continue
 			else:
 				res.append(arg)

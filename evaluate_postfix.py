@@ -15,7 +15,7 @@ def is_operator(s: str) -> bool:
 
 
 def is_single_operator(s):
-	return s in ("cos(", "sin(", "tan(", "abs(", "!")
+	return s in ("(", "sin(", "cos(", "tan(", "ln(", "log2(", "log10(", "sqrt(", "abs(", "fac(")
 
 
 # Perform arithmetic operation
@@ -42,8 +42,16 @@ def apply_single_operator(a: float, operator: str) -> float:
 		return tan(a)
 	elif operator == "abs(":
 		return abs(a)
-	elif operator == "!":
+	elif operator == "fac(":
 		return gamma(a + 1)
+	elif operator == "ln(":
+		return log(a)
+	elif operator == "log10(":
+		return log10(a)
+	elif operator == "log2(":
+		return log2(a)
+	elif operator == "sqrt(":
+		return sqrt(a)
 	raise ArithmeticError(f"Invalid Operator: {operator}")
 
 

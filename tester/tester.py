@@ -14,6 +14,8 @@ with open("test.csv") as file:
 
 	i = 1
 	for eq, value in csv_reader:
+		# debug
+		# print(eq, value)
 		output = evaluate_postfix(infix_to_postfix(parsing(eq)))
 		if float(value) != round(float(output), 6):
 			print(f"Test [{i}]: {eq}")

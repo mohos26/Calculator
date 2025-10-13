@@ -16,7 +16,7 @@ def bracket_checker(lst):
 
 def syntax_error(lst):
 	instruction = {"(", ")", "/", "sin(", "cos(", "tan(", "*", "ln(",
-				"log2(", "log10(", "-", "^", "sqrt(", "+", "abs(", "!"}
+				"log2(", "log10(", "-", "^", "sqrt(", "+", "abs(", "fac("}
 	for arg in lst:
 		if arg not in instruction and not re.fullmatch(r"\d+\.?\d*", arg):
 			return False

@@ -130,7 +130,7 @@ def pi(entry):
 
 
 def factorial(entry):
-	insert_text(entry, "!")
+	insert_text(entry, "fac(")
 
 
 def dot(entry):
