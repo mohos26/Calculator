@@ -126,7 +126,7 @@ def abs(entry):
 
 
 def pi(entry):
-	pass
+	insert_text(entry, "π")
 
 
 def factorial(entry):
