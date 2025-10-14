@@ -3,17 +3,16 @@
 # Date: 26.08.2025
 # Source: https://edabit.com/challenge/NZtL4MGkpCfiwShhp
 # Purpose: Convert an infix expression into postfix (Reverse Polish Notation).
-# Supports operators: +, -, *, /, ^
-# Handles precedence, associativity, and unary signs.
 # ===============================
 
 
 # Operator precedence dictionary
 d = {
-	"-":  1,
-	"+":  1,
-	"/":  2,
-	"*":  2,
+	"-": 1,
+	"+": 1,
+	"/": 2,
+	"*": 2,
+	"%": 2,
 	"^": 3,
 }
 
@@ -39,7 +38,7 @@ def preprocess(expr: list) -> list:
 			elif expr[i - 1] in ("*", "-", "+") or is_single_operator(expr[i - 1]):
 				res.append("-1")
 				res.append("*")
-			elif expr[i - 1] in ("/", "^"):
+			elif expr[i - 1] in ("/", "^", "%"):
 				sing *= -1
 			else:
 				res.append(arg)

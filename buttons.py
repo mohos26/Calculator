@@ -69,8 +69,8 @@ def clear(entry):
 	entry.config(state=DISABLED)
 
 
-def ans(entry):
-	pass
+def mod(entry):
+	insert_text(entry, "%")
 
 
 def div(entry):
@@ -155,7 +155,7 @@ def delete(entry):
 
 buttons = (
 	('(', 1, 0, open_bracket), (')', 1, 1, close_bracket), ('rad | deg', 1, 2, angle_unit), ('C', 1, 3, clear),
-	('ANS', 1, 4, ans), ('/', 1, 5, div), ('DEL', 1, 6, delete), ('sin', 2, 0, sin), ('cos', 2, 1, cos),
+	('mod', 1, 4, mod), ('/', 1, 5, div), ('DEL', 1, 6, delete), ('sin', 2, 0, sin), ('cos', 2, 1, cos),
 	('tan', 2, 2, tan), ('7', 2, 3, seven), ('8', 2, 4, eight), ('9', 2, 5, nine), ('*', 2, 6, mul), ('ln', 3, 0, ln),
 	('log2', 3, 1, log2), ('log10', 3, 2, log10), ('4', 3, 3, four), ('5', 3, 4, five), ('6', 3, 5, six),
 	('-', 3, 6, sub), ('x^y', 4, 0, power), ('x^2', 4, 1, power2), ('sqrt', 4, 2, sqrt), ('1', 4, 3, one),
