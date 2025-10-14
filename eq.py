@@ -1,13 +1,15 @@
 # 09.10.2025
 
+import buttons
 from parsing import parsing
-from buttons import clear, insert_text
 from syntax_error import syntax_error
+from buttons import clear, insert_text
 from infix_to_postfix import infix_to_postfix
 from evaluate_postfix import evaluate_postfix
 
 
-def ft_aid(n):
+
+def to_int_if_possible(n):
 	if n == int(n):
 		return int(n)
 	return n
@@ -23,12 +25,22 @@ def eq(entry):
 	print(*lst)
 	if not syntax_error(lst):
 		insert_text(entry, "Syntax Error")
+		buttons.should_clear = True
 		return
 	try:
 		postfix = infix_to_postfix(lst)
-		insert_text(entry, ft_aid(evaluate_postfix(postfix)))
+		res = evaluate_postfix(postfix)
+		if res > 1_000_000_000_000:
+			insert_text(entry, "+∞")
+		elif res < -1_000_000_000_000:
+			insert_text(entry, "-∞")
+		else:
+			insert_text(entry, to_int_if_possible(res))
 	except IndexError:
 		insert_text(entry, "Syntax Error")
+	except ZeroDivisionError:
+		insert_text(entry, "Divide by zero")
 	except Exception as e:
 		print(e)
 		insert_text(entry, f"Bug \"{prompt}\"")
+	buttons.should_clear = True

@@ -4,7 +4,7 @@ import re
 
 
 def bracket_checker(lst):
-	instruction = {"(", "sin(", "cos(", "tan(", "ln(", "log2(", "log10(", "sqrt(", "abs("}
+	instruction = {"(", "sin(", "cos(", "tan(", "ln(", "log2(", "log10(", "sqrt(", "abs(", "fac("}
 	res = 0
 	for arg in lst:
 		if arg in instruction:

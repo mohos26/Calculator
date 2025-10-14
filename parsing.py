@@ -17,7 +17,7 @@ def parsing(prompt):
 	for arg in prompt:
 		if not res:
 			res.append(arg)
-		elif re.fullmatch(r"\w+\d*", res[-1]) and re.fullmatch(r"[\d\w(]+", arg):
+		elif re.fullmatch(r"[\w√]+\d*", res[-1]) and re.fullmatch(r"[\d\w(]+", arg):
 				res[-1] += arg
 		elif re.fullmatch(r"[0-9.]+", res[-1]) and re.fullmatch(r"[\d.]+", arg):
 				res[-1] += arg

@@ -2,10 +2,14 @@
 
 from tkinter import *
 
+should_clear = False
+
 
 def insert_text(entry, text):
-	if entry.get().startswith("Syntax") or entry.get().startswith("Bug"):
+	global should_clear
+	if should_clear:
 		clear(entry)
+	should_clear = False
 	entry.config(state=NORMAL)
 	entry.insert(END, text)
 	entry.config(state=DISABLED)
