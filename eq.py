@@ -6,7 +6,7 @@ from syntax_error import syntax_error
 from buttons import clear, insert_text
 from infix_to_postfix import infix_to_postfix
 # from evaluate_postfix import evaluate_postfix
-from aid_file import ft_aid
+from threaded_evaluate import threaded_evaluate
 
 
 def eq(entry):
@@ -23,14 +23,7 @@ def eq(entry):
 		return
 	try:
 		postfix = infix_to_postfix(lst)
-		# res = evaluate_postfix(postfix)
-		# if res > 1_000_000_000_000:
-		# 	insert_text(entry, "+∞")
-		# elif res < -1_000_000_000_000:
-		# 	insert_text(entry, "-∞")
-		# else:
-		# 	insert_text(entry, to_int_if_possible(res))
-		ft_aid(postfix, entry)
+		threaded_evaluate(postfix, entry)
 	except IndexError:
 		insert_text(entry, "Syntax Error")
 	except ZeroDivisionError:
@@ -39,6 +32,8 @@ def eq(entry):
 		insert_text(entry, "Math Domain Error")
 	except TimeoutError:
 		insert_text(entry, "Time Out Error")
+	except OverflowError:
+		insert_text(entry, "+∞")
 	except Exception as e:
 		print(e)
 		insert_text(entry, f"Bug \"{prompt}\"")

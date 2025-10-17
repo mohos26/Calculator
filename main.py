@@ -5,6 +5,7 @@
 from tkinter import *
 from buttons import buttons
 from eq import eq
+from events import events
 
 
 if __name__ == '__main__':
@@ -38,5 +39,8 @@ if __name__ == '__main__':
 		Button(root, text=text, font=("Arial", 20), width=5, height=2, command=lambda f=func: f(entry))\
 			.grid(row=row, column=col, padx=1, pady=1, sticky="nsew")
 	Button(root, text="=", font=("Arial", 24), command=lambda: eq(entry)).grid(row=5, column=5, columnspan=2, sticky="nsew")
+
+	events(root, entry)
+	root.focus_set()
 
 	root.mainloop()

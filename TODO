@@ -2,5 +2,4 @@
 + any number < -1_000_000_000_000 return -∞
 + left-associative and right-associative, we have to ways
 + add press enter like '='
-+ if the process exceed '?' second, Time limite
-+ fix 'del' button after any 'Error'
++ bug press '1' don't work, but right click in mouse he write '1'

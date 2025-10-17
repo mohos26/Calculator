@@ -146,12 +146,18 @@ def angle_unit(entry):
 
 
 def delete(entry):
+	global should_clear
+	if should_clear:
+		clear(entry)
+		should_clear = False
+		return
 	length = len(entry.get())
 	if not length:
 		return
 	entry.config(state=NORMAL)
 	entry.delete(length - 1, length)
 	entry.config(state=DISABLED)
+
 
 buttons = (
 	('(', 1, 0, open_bracket), (')', 1, 1, close_bracket), ('rad | deg', 1, 2, angle_unit), ('C', 1, 3, clear),
