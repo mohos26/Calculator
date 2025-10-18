@@ -33,7 +33,7 @@ def eq(entry):
 	except TimeoutError:
 		insert_text(entry, "Time Out Error")
 	except OverflowError:
-		insert_text(entry, "+∞")
+		insert_text(entry, "∞")
 	except Exception as e:
 		print(e)
 		insert_text(entry, f"Bug \"{prompt}\"")
