@@ -1,6 +1,8 @@
 # 07.10.2025
 
 from tkinter import *
+import pyperclip
+
 
 should_clear = False
 
@@ -141,8 +143,8 @@ def dot(entry):
 	insert_text(entry, ".")
 
 
-def angle_unit(entry):
-	pass
+def copy(entry):
+	pyperclip.copy(entry.get())
 
 
 def delete(entry):
@@ -160,7 +162,7 @@ def delete(entry):
 
 
 buttons = (
-	('(', 1, 0, open_bracket), (')', 1, 1, close_bracket), ('rad | deg', 1, 2, angle_unit), ('C', 1, 3, clear),
+	('(', 1, 0, open_bracket), (')', 1, 1, close_bracket), ('copy', 1, 2, copy), ('C', 1, 3, clear),
 	('mod', 1, 4, mod), ('/', 1, 5, div), ('DEL', 1, 6, delete), ('sin', 2, 0, sin), ('cos', 2, 1, cos),
 	('tan', 2, 2, tan), ('7', 2, 3, seven), ('8', 2, 4, eight), ('9', 2, 5, nine), ('*', 2, 6, mul), ('ln', 3, 0, ln),
 	('log2', 3, 1, log2), ('log10', 3, 2, log10), ('4', 3, 3, four), ('5', 3, 4, five), ('6', 3, 5, six),
