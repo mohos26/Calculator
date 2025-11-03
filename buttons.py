@@ -1,7 +1,7 @@
 # 07.10.2025
 
 from tkinter import *
-import pyperclip
+# import pyperclip
 
 
 should_clear = False
@@ -143,8 +143,8 @@ def dot(entry):
 	insert_text(entry, ".")
 
 
-def copy(entry):
-	pyperclip.copy(entry.get())
+def e(entry):
+	insert_text(entry, "e")
 
 
 def delete(entry):
@@ -162,11 +162,37 @@ def delete(entry):
 
 
 buttons = (
-	('(', 1, 0, open_bracket), (')', 1, 1, close_bracket), ('copy', 1, 2, copy), ('C', 1, 3, clear),
-	('mod', 1, 4, mod), ('/', 1, 5, div), ('DEL', 1, 6, delete), ('sin', 2, 0, sin), ('cos', 2, 1, cos),
-	('tan', 2, 2, tan), ('7', 2, 3, seven), ('8', 2, 4, eight), ('9', 2, 5, nine), ('*', 2, 6, mul), ('ln', 3, 0, ln),
-	('log2', 3, 1, log2), ('log10', 3, 2, log10), ('4', 3, 3, four), ('5', 3, 4, five), ('6', 3, 5, six),
-	('-', 3, 6, sub), ('x^y', 4, 0, power), ('x^2', 4, 1, power2), ('sqrt', 4, 2, sqrt), ('1', 4, 3, one),
-	('2', 4, 4, two), ('3', 4, 5, three), ('+', 4, 6, add), ('abs', 5, 0, abs), ('pi', 5, 1, pi),
-	('x!', 5, 2, factorial), ('.', 5, 3, dot), ('0', 5, 4, zero),
+	('(', 1, 0, open_bracket, "Spec.TButton"),
+	(')', 1, 1, close_bracket, "Spec.TButton"),
+	('e', 1, 2, e, "Spec.TButton"),
+	('C', 1, 3, clear, "Spec.TButton"),
+	('mod', 1, 4, mod, "Spec.TButton"),
+	('/', 1, 5, div, "Spec.TButton"),
+	('DEL', 1, 6, delete, "Spec.TButton"),
+	('sin', 2, 0, sin, "Spec.TButton"),
+	('cos', 2, 1, cos, "Spec.TButton"),
+	('tan', 2, 2, tan, "Spec.TButton"),
+	('7', 2, 3, seven, "Num.TButton"),
+	('8', 2, 4, eight, "Num.TButton"),
+	('9', 2, 5, nine, "Num.TButton"),
+	('*', 2, 6, mul, "Spec.TButton"),
+	('ln', 3, 0, ln, "Spec.TButton"),
+	('log2', 3, 1, log2, "Spec.TButton"),
+	('log10', 3, 2, log10, "Spec.TButton"),
+	('4', 3, 3, four, "Num.TButton"),
+	('5', 3, 4, five, "Num.TButton"),
+	('6', 3, 5, six, "Num.TButton"),
+	('-', 3, 6, sub, "Spec.TButton"),
+	('x^y', 4, 0, power, "Spec.TButton"),
+	('x^2', 4, 1, power2, "Spec.TButton"),
+	('√', 4, 2, sqrt, "Spec.TButton"),
+	('1', 4, 3, one, "Num.TButton"),
+	('2', 4, 4, two, "Num.TButton"),
+	('3', 4, 5, three, "Num.TButton"),
+	('+', 4, 6, add, "Spec.TButton"),
+	('abs', 5, 0, abs, "Spec.TButton"),
+	('π', 5, 1, pi, "Spec.TButton"),
+	('x!', 5, 2, factorial, "Spec.TButton"),
+	('.', 5, 3, dot, "Num.TButton"),
+	('0', 5, 4, zero, "Num.TButton"),
 )

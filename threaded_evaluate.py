@@ -8,7 +8,7 @@ errno = None
 def to_int_if_possible(n):
 	if n == int(n):
 		return int(n)
-	return n
+	return round(n, 6)
 
 
 def background_eval(postfix):

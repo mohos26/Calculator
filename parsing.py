@@ -9,6 +9,8 @@ def replace(lst):
 			lst[i] = "sqrt("
 		elif arg == "π":
 			lst[i] = "3.141593"
+		elif arg == "e":
+			lst[i] = "2.718281"
 	return lst
 
 
@@ -23,6 +25,8 @@ def parsing(prompt):
 				res[-1] += arg
 		elif arg == "π":
 			res.append("π")
+		elif arg == "e":
+			res.append("e")
 		else:
 			res.append(arg)
 	replace(res)
