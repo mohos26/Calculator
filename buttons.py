@@ -1,7 +1,6 @@
 # 07.10.2025
 
 from tkinter import *
-# import pyperclip
 
 
 should_clear = False
